@@ -13,7 +13,7 @@ jobs:
 
 # adding steps: allows to automate tasks like checking out code, running commands, or using open source Actions, they run sequentially in the job's environment but as independent processes
     steps:
-      - run: gh pr comment "$PR_URL" --body "Welcome to the repository!"
+      - run: gh pr comment "$PR_URL" --body "2nd pull request"
         env: 
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
             PR_URL: ${{ github.event.pull_request.html_url }}
