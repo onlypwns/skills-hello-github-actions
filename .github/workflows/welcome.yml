@@ -1,11 +1,19 @@
+# setting up actions
 name: Post welcome comment
 on:
   pull_request:
     types: [opened]
 permissions:
   pull-requests: write
-
+# adding jobs: group of steps that run together on the same runner within a workflow, each job is defined under the jobs section and runs independently and in parallel by default
 jobs:
   welcome:
     name: Post welcome comment
     runs-on: ubuntu-latest
+
+# adding steps: allows to automate tasks like checking out code, running commands, or using open source Actions, they run sequentially in the job's environment but as independent processes
+    steps:
+      - run: gh or comment "$PR_URL" --body "Welcome to the repo"
+        env: 
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+            PR_URL: ${{ github.event.pull_request.html_url }}
